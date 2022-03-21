@@ -1,6 +1,8 @@
+import React from 'react';
+
 import './ExpenseDate.css';
 
-function ExpenseDate(props) {
+const ExpenseDate = (props) => {
   // noinspection JSCheckFunctionSignatures
   const month = props.date.toLocaleString('en-GB', {month:'long'});
   // noinspection JSCheckFunctionSignatures
