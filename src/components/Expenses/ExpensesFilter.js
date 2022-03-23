@@ -1,21 +1,27 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import './ExpensesFilter.css';
 
+/**
+ * Dropdown list selector for the YEAR filter.
+ * It is a controlled component:
+ * * Passes and receives selected the value to/from parent component (Expenses.js).
+ * * Uses parent function to update state of filteredYear parameter in parent.
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const ExpensesFilter = (props) => {
-  const [filteredYear, setFilteredYear] = useState()
 
-  const setFilter = (event) => {
-    event.preventDefault();
-    setFilteredYear(event.target.value);
-    props.onFilterExpense(event.target.value);
+  const setFilterHandler = (event) => {
+    props.onFilterChange(event.target.value);
   };
 
   return (
     <div className='expenses-filter'>
       <div className='expenses-filter__control'>
         <label>Filter by year</label>
-        <select onChange={setFilter} value={filteredYear}>
+        <select onChange={setFilterHandler} value={props.selected}>
           <option value='2022'>2022</option>
           <option value='2021'>2021</option>
           <option value='2020'>2020</option>
