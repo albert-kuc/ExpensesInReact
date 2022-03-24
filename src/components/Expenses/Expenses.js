@@ -1,28 +1,31 @@
 import React, {useState} from 'react';
 
-import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card"
 import ExpensesFilter from "./ExpensesFilter";
+import ExpensesList from "./ExpensesList";
 import "./Expenses.css"
 
 /**
- * Displays all expense items and year filter.
- * Passes filteredYear to ExpensesFilter and updates filteredYear state by output from  ExpensesFilter.
+ * Card expense component with year filter and expense elements.
  * @param props
  * @returns {JSX.Element}
  * @constructor
  */
 const Expenses = (props) => {
+
   const [filteredYear, setFilteredYear] = useState('2021')
 
   /**
    * Calls setFilteredYear state function to update filteredYear parameter.
-   * The function is passed to child components (ExpensesFilter) where from it is executed.
+   * Function is passed to the child component (ExpensesFilter), where it is executed.
    * @param newFilteredYear string value passed by child component during the event handling
    */
   const filterChangeHandler = newFilteredYear => {
     setFilteredYear(newFilteredYear);
   };
+
+  const expensesFilteredByYear = props.items.filter(expense =>
+    expense.date.getFullYear().toString() === filteredYear)
 
   return (
     <div>
@@ -31,14 +34,7 @@ const Expenses = (props) => {
           selected={filteredYear}
           onFilterChange={filterChangeHandler}
         />
-        {props.items.map(expense => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+        <ExpensesList items={expensesFilteredByYear}/>
       </Card>
     </div>
   )

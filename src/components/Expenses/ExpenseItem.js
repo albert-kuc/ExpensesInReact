@@ -5,20 +5,22 @@ import Card from "../UI/Card"
 import './ExpenseItem.css';
 
 /**
- * Displays individual expense data
+ * List element representing a card component of individual expense data.
  * @param props
  * @returns {JSX.Element}
  * @constructor
  */
 const ExpenseItem = (props) => {
   return (
-    <Card className="expense-item">
-      <ExpenseDate date={props.date}/>
-      <div className="expense-item__description">
-        <h2>{props.title}</h2>
-        <div className="expense-item__price">£{props.amount}</div>
-      </div>
-    </Card>
+    <li>
+      <Card className="expense-item">
+        <ExpenseDate date={props.date}/>
+        <div className="expense-item__description">
+          <h2>{props.title}</h2>
+          <div className="expense-item__price">£{props.amount}</div>
+        </div>
+      </Card>
+    </li>
   )
 }
 
