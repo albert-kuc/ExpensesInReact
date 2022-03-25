@@ -29,16 +29,10 @@ const ExpenseForm = (props) => {
     };
 
     props.onSaveExpenseData(expenseData);
-    props.onCollapseExpenseForm()
-  };
-
-  const cancelHandler = () => {
-    console.log('In cancelHandler')
-    props.onCollapseExpenseForm()
   };
 
   return (
-    <form onSubmit={submitHandler} onReset={cancelHandler}>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
@@ -66,9 +60,7 @@ const ExpenseForm = (props) => {
             onChange={dateChangeHandler} />
         </div>
         <div className='new-expense__actions'>
-          <button type='reset'>Cancel</button>
-        </div>
-        <div className='new-expense__actions'>
+          <button type='button' onClick={props.onCancel}>Cancel</button>
           <button type='submit'>Add Expense</button>
         </div>
       </div>
