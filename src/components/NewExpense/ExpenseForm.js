@@ -2,6 +2,12 @@ import React, { useState } from "react";
 
 import './ExpenseForm.css'
 
+/**
+ * Displays UI to provide new expense title, amount and date.
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredAmount, setEnteredAmount] = useState('');
@@ -19,12 +25,17 @@ const ExpenseForm = (props) => {
     setEnteredDate(event.target.value);
   };
 
+  /**
+   * Prevents page default behaviour to refresh on submit.
+   * Builds expense data array from input and passes to parent props function.
+   * @param event
+   */
   const submitHandler = (event) => {
     event.preventDefault();
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
 
