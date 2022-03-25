@@ -29,13 +29,16 @@ const ExpenseForm = (props) => {
     };
 
     props.onSaveExpenseData(expenseData);
-    setEnteredTitle('');
-    setEnteredAmount('');
-    setEnteredDate('');
+    props.onCollapseExpenseForm()
+  };
+
+  const cancelHandler = () => {
+    console.log('In cancelHandler')
+    props.onCollapseExpenseForm()
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} onReset={cancelHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
@@ -61,6 +64,9 @@ const ExpenseForm = (props) => {
             max='2025-12-31'
             value={enteredDate}
             onChange={dateChangeHandler} />
+        </div>
+        <div className='new-expense__actions'>
+          <button type='reset'>Cancel</button>
         </div>
         <div className='new-expense__actions'>
           <button type='submit'>Add Expense</button>
