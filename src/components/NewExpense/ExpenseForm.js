@@ -31,8 +31,10 @@ const ExpenseForm = (props) => {
    * @param event
    */
   const submitHandler = (event) => {
+    // Prevents page refresh
     event.preventDefault();
 
+    // Builds expense data array
     const expenseData = {
       title: enteredTitle,
       amount: +enteredAmount,

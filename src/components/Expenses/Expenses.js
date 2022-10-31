@@ -17,8 +17,9 @@ const Expenses = (props) => {
   const [filteredYear, setFilteredYear] = useState('2021')
 
   /**
+   * Function triggered by onFilterChange event.
    * Calls setFilteredYear state function to update filteredYear parameter.
-   * Function is passed to the child component (ExpensesFilter), where it is executed.
+   * It's passed to the child component (ExpensesFilter), where it gets executed.
    * @param newFilteredYear string value passed by child component during the event handling
    */
   const filterChangeHandler = newFilteredYear => {
@@ -28,6 +29,10 @@ const Expenses = (props) => {
   const expensesFilteredByYear = props.items.filter(expense =>
     expense.date.getFullYear().toString() === filteredYear)
 
+  /**
+   * Uses Card as a container component instead of div to apply certain styling to Expenses or ExpenseItem
+   * passes "expenses" parameter to alongside "card" style
+   */
   return (
     <div>
       <Card className="expenses">

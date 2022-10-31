@@ -11,6 +11,10 @@ import './ExpenseItem.css';
  * @constructor
  */
 const ExpenseItem = (props) => {
+
+  /**
+   * Uses Card as a container component instead of div to apply certain styling to Expenses or ExpenseItem
+   */
   return (
     <li>
       <Card className="expense-item">
